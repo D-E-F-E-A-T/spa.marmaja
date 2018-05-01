@@ -128,26 +128,29 @@ function configsGet(name) {
      * @property {!string} name - A human readable identifier.
      * @property {!string} owner - An account owner identifier.
      * @property {!string} type - An account type identifier.
+     * @property {!string} currency - The currency ID for the account balance.
+     * @property {!number} balance - The amount this account holds.
+     * @property {number} balanceInit - The initial balance when created.
+     * @property {number} balanceCredit - Amount of the balance that is credit.
+     * @property {string} description - A text describing the account.
      * @property {!number} dateCreated - The date when the account was created.
      * @property {!boolean} enabled - Whether the account is enabled or not.
-     * @property {!number} balance - The amount this account holds.
-     * @property {!string} currency - The currency ID for the account balance.
-     * @property {!number} balanceInit - The initial balance when created.
-     * @property {string} description - A text describing the account.
      */
     config.Accounts = {
-        range: 'A:J',
+        name: 'Accounts',
+        range: 'A:K',
         keys: [
             'id',
             'name',
             'owner',
             'type',
+            'currency',
+            'balance',
+            'balanceInit',
+            'balanceCredit',
+            'description',
             'dateCreated',
             'enabled',
-            'balance',
-            'currency',
-            'balanceInit',
-            'description',
         ],
     };
 
