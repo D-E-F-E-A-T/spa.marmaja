@@ -1,6 +1,6 @@
 {
     "name": "marmaja.back",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "The google scripts backend for Marmaja.",
     "main": "src/Code.js",
     "author": "Héctor Menéndez <hector@gik.mx>",
