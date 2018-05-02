@@ -2,8 +2,6 @@
 
 /**
  * @typedef {Object} Range
- * @description Access and modify spreadsheet ranges.
- * It be a single cell in a sheet or a group of adjacent cells in a sheet.
  */
 
 /**
@@ -13,22 +11,20 @@
  */
 
 /**
- * @typedef {Object}  Sheet
- * @description Object that allows the manipulation of a sheet in a spreadSheet.
- *
+ * @typedef {Object} Sheet
  */
 
 /**
  * @method Sheet.getRange
  * @description Returns the range as specified in A1 notation or R1C1 notation.
- * @param {!string} a1Notation - A string as specified in A1 notation or R1C1 notation.
+ * @param {!String} a1Notation - A string as specified in A1 notation or R1C1 notation.
  * @returns {Range} the range at the designated location.
  */
 
 /**
- * @function utilsGetSheet
+ * @function
  * @description Shorthand to obtain a Sheet by name.
- * @param {!string} name - The name of the sheet to retrieve,
+ * @param {!String} name - The name of the sheet to retrieve,
  * @returns {Sheet} The specified sheet.
  */
 function utilsGetSheet(name) {
@@ -39,7 +35,7 @@ function utilsGetSheet(name) {
 }
 
 /**
- * @function utilsGetSheet
+ * @function
  * @description Convert a values matrix into a JSON-compliant object.
  * @param {!Array} keys - The property names to be used as headers of given values.
  * @param {!Object[][]} values - Values obtained from a getRange() method.
@@ -58,4 +54,20 @@ function utilsValuesToObject(keys, values) {
         // Logger.log(row);
         return rows.concat(row);
     }, []);
+}
+
+/**
+ * @function
+ * @description Obtain valid data from a sheet cofiguration.
+ * @param {!Object} config - A Sheet configuration.
+ * @param {!String} config.name - The sheet name.
+ * @param {!String} config.range - A named range where to get the data.
+ * @param {!Array} config.keys - The map that will be used to convert column names.
+ * @returns {Object[]} The corresponding data matrix in a JSON-compatible object.
+ */
+function utilsGetSheetData(config) {
+    const values = utilsGetSheet(config.name)
+        .getRange(config.range)
+        .getValues();
+    return utilsValuesToObject(config.keys, values);
 }
